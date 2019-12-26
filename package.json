@@ -2,17 +2,18 @@
   "name": "electron-quick-start-typescript",
   "version": "1.0.0",
   "main": "dist-ts/main.js",
+  "email": "dalong@qq.com",
   "description": "A minimal Electron application written with Typescript",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "all:packager": "npm run build && npm run package && npm run dmg",
+    "all:packager": "npm run build && npm run packager && npm run dmg",
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "dmg": "electron-installer-dmg  --overwrite ./electron-quick-start-typescript-darwin-x64 rongfengliang",
     "packager": "electron-packager --overwrite --protocol=rongfengliang  --protocol-name=rongfengliang .",
     "start": "npm run build && electron ./dist/main.js",
-    "builder":"electron-builder build",
-    "all:builder":"npm run build && npm run builder"
+    "builder": "electron-builder",
+    "all:builder": "npm run build && npm run builder"
   },
   "build": {
     "mac": {
@@ -21,9 +22,18 @@
         "zip"
       ]
     },
+    "linux": {
+      "maintainer":"dalong@qq.com",
+      "target": [
+        "deb",
+        "rpm",
+        "zip"
+      ]
+    },
     "win": {
       "target": [
         "nsis",
+        "msi",
         "zip"
       ]
     }
@@ -42,6 +52,7 @@
   "devDependencies": {
     "electron": "^7.1.7",
     "electron-builder": "^21.2.0",
+    "electron-builder-squirrel-windows": "^22.2.0",
     "electron-installer-dmg": "^3.0.0",
     "electron-packager": "^14.1.1",
     "tslint": "^5.19.0",
