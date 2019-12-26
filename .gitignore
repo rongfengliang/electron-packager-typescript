@@ -2,3 +2,4 @@ node_modules
 dist
 electron-quick-start-typescript-darwin-x64
 rongfengliang.dmg
+dist-ts

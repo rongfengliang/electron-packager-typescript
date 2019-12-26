@@ -1,16 +1,32 @@
 {
   "name": "electron-quick-start-typescript",
   "version": "1.0.0",
-  "main": "dist/main.js",
+  "main": "dist-ts/main.js",
   "description": "A minimal Electron application written with Typescript",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "all":"npm run build && npm run package && npm run dmg",
+    "all:packager": "npm run build && npm run package && npm run dmg",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "dmg":"electron-installer-dmg  --overwrite ./electron-quick-start-typescript-darwin-x64 rongfengliang",
-    "package": "electron-packager --overwrite --protocol=rongfengliang --protocol-name=rongfengliang .",
-    "start": "npm run build && electron ./dist/main.js"
+    "dmg": "electron-installer-dmg  --overwrite ./electron-quick-start-typescript-darwin-x64 rongfengliang",
+    "packager": "electron-packager --overwrite --protocol=rongfengliang  --protocol-name=rongfengliang .",
+    "start": "npm run build && electron ./dist/main.js",
+    "builder":"electron-builder build",
+    "all:builder":"npm run build && npm run builder"
+  },
+  "build": {
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    }
   },
   "repository": "https://github.com/electron/electron-quick-start-typescript",
   "keywords": [
@@ -25,6 +41,7 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^7.1.7",
+    "electron-builder": "^21.2.0",
     "electron-installer-dmg": "^3.0.0",
     "electron-packager": "^14.1.1",
     "tslint": "^5.19.0",
