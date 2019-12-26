@@ -6,8 +6,10 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
+    "all":"npm run build && npm run package && npm run dmg",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "package": "electron-packager --overwrite  .",
+    "dmg":"electron-installer-dmg  --overwrite ./electron-quick-start-typescript-darwin-x64 rongfengliang",
+    "package": "electron-packager --overwrite --protocol=rongfengliang --protocol-name=rongfengliang .",
     "start": "npm run build && electron ./dist/main.js"
   },
   "repository": "https://github.com/electron/electron-quick-start-typescript",
@@ -23,6 +25,7 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^7.1.7",
+    "electron-installer-dmg": "^3.0.0",
     "electron-packager": "^14.1.1",
     "tslint": "^5.19.0",
     "typescript": "^3.6.0"

@@ -11,6 +11,7 @@ function createWindow() {
       preload: path.join(__dirname, "preload.js"),
       devTools:false,
     },
+    autoHideMenuBar:true,
     width: 800,
   });
 
