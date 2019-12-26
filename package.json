@@ -1,7 +1,7 @@
 {
-  "name": "electron-quick-start-typescript",
+  "name": "my-code",
   "version": "1.0.0",
-  "main": "dist-ts/main.js",
+  "main": "app/main.js",
   "email": "dalong@qq.com",
   "description": "A minimal Electron application written with Typescript",
   "scripts": {
@@ -9,34 +9,9 @@
     "watch": "tsc -w",
     "all:packager": "npm run build && npm run packager && npm run dmg",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "dmg": "electron-installer-dmg  --overwrite ./electron-quick-start-typescript-darwin-x64 rongfengliang",
-    "packager": "electron-packager --overwrite --protocol=rongfengliang  --protocol-name=rongfengliang .",
-    "start": "npm run build && electron ./dist/main.js",
-    "builder": "electron-builder",
-    "all:builder": "npm run build && npm run builder"
-  },
-  "build": {
-    "mac": {
-      "target": [
-        "dmg",
-        "zip"
-      ]
-    },
-    "linux": {
-      "maintainer":"dalong@qq.com",
-      "target": [
-        "deb",
-        "rpm",
-        "zip"
-      ]
-    },
-    "win": {
-      "target": [
-        "nsis",
-        "msi",
-        "zip"
-      ]
-    }
+    "dmg": "electron-installer-dmg  --overwrite ./my-code-darwin-x64 rongfengliang",
+    "packager": "electron-packager --ignore=rongfengliang.dmg --ignore=dist --ignore=tsconfig.json --ignore=tslint.json --ignore=yarn.lock  --ignore=package-lock.json --ignore=src --overwrite --protocol=mycode  --protocol-name=mycode .",
+    "start": "npm run build && electron ./app/main.js"
   },
   "repository": "https://github.com/electron/electron-quick-start-typescript",
   "keywords": [
@@ -51,8 +26,6 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^7.1.7",
-    "electron-builder": "^21.2.0",
-    "electron-builder-squirrel-windows": "^22.2.0",
     "electron-installer-dmg": "^3.0.0",
     "electron-packager": "^14.1.1",
     "tslint": "^5.19.0",
